@@ -8,20 +8,21 @@
 </head>
 <body>
     <script>
-        let name = {
-            name: 'Alex',
+        function list() {
+             return Array.prototype.slice.call(arguments);
         }
-        function fullName (patronymic, surname) {
-            return console.log(`Full name: ${surname} ${this.name} ${patronymic}`);
-        }
+
+        var list1 = list(1, 2, 3);
 
 
         var bind = (Function, context, ...end) => 
         (...value) => 
         Function.apply(context, end.concat(value));
         
-        
-        bind(fullName, name, 'Alexandrov', 'Pupkin') ();
+        var leadingThirtysevenList = list.bind(undefined, 37);
+
+        var list2 = leadingThirtysevenList(1, 2, 3);
+        console.log(list2);
     </script>
 </body>
 </html>
